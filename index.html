@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>書曼的旅遊相簿</title>
+    <style>
+        body {
+            background: #333;
+        }
+
+        #main {
+            width: 1024px;
+            height: 768px;
+            margin: auto;
+            background: #ffc;
+        }
+
+        #left {
+            width: 150px;
+            height: 768px;
+            float: left;
+            /* background: lavender; */
+        }
+
+        #right {
+            width: calc(1024px - 150px);
+            height: 768px;
+            float: right;
+        }
+
+        marquee {
+            width: calc(1024px - 150px);
+            height: 50px;
+            font-size: 24px;
+            font-family: "標楷體";
+            font-weight: bolder;
+            color: #f00;
+            /* 水平置中 */
+            text-align: center;
+            /* 垂直置中 */
+            line-height: 50px;
+        }
+
+        #content {
+            /* -72px 是扣除 padding */
+            width: calc(1024px - 150px - 72px);
+            height: calc(768px - 150px - 72px);
+            padding: 36px;
+        }
+
+        iframe {
+            width: calc(1024px - 150px - 72px);
+            height: calc(768px - 150px - 72px);
+        }
+
+        #left table {
+            margin: auto;
+            text-align: center;
+        }
+
+        .info {
+            font-size: 12px;
+            font-weight: bold;
+            color: #f00;
+            font-family: "新細明體";
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="../music/0501.mp3" autoplay></audio>
+    <div id="main">
+        <div id="left">
+            <table>
+                <tr>
+                    <td><img src="./images/0508.gif" alt="書曼的旅遊相簿" title="書曼的旅遊相簿"></td>
+                </tr>
+                <tr>
+                    <td><img src="./images/0507.jpg" alt="書曼" title="書曼"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><img class="img" src="./images/0501b.gif" alt="金門逍遙遊" title="金門逍遙遊"></td>
+                </tr>
+                <tr>
+                    <td><img class="img" src="./images/0502b.gif" alt="卡蹓到馬祖" title="卡蹓到馬祖"></td>
+                </tr>
+                <tr>
+                    <td><img class="img" src="./images/0503b.gif" alt="踏浪澎湖行" title="踏浪澎湖行"></td>
+                </tr>
+                <tr>
+                    <td><img class="img" src="./images/0504b.gif" alt="綠島唱夜曲" title="綠島唱夜曲"></td>
+                </tr>
+                <tr>
+                    <td><a href="./album5/album5.html" target="iframe"><img class="img" src="./images/0505b.gif"
+                                alt="蘭嶼賞魚去" title="蘭嶼賞魚去"></a></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        日期：2024/10/22<br>
+                        維護：02kawajyyyj
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><a href="./index.html"><img class="img" src="./images/0506b.gif" alt="回首頁" title="回首頁"></a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="right">
+            <marquee>歡迎來到書曼的旅遊相簿，本網站有我的旅遊影像紀錄介紹耶！</marquee>
+
+            <div id="content">
+                <iframe src="./main.html" frameborder="0" name="iframe"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- 記得引入jQuery 去第二題抓 -->
+    <script src="./jquery-2.1.4.min.js"></script>
+    <script>
+        // 1. "抓到所有 .img 的圖片"，"然後迭代他們做事情"
+        // 2. 做的事情是，滑鼠"移過去"換圖片，"移開"換回來
+        console.log($('.img'))
+        $('.img').each(function (index, img) {
+            console.log(index, img)
+            // hover 有兩個 function，一個是移過去做的事情，一個是移出去做的事情
+            $(img).hover(function () {
+                // 換新圖
+                // 小心 $(img) 裡面不要寫成 $('img')，這樣會選到每一個人
+                $(img).attr('src', `./images/050${index + 1}r.gif`)
+            }, function () {
+                // 換回來
+                $(img).attr('src', `./images/050${index + 1}b.gif`)
+            })
+        })
+
+        // 使用甚麼資料型態，絕情使用的屬性、方法
+        // 例如: 字串=> 可以操作他的屬性、方法
+        // 例如: 自定義物件=> 可以操作其屬性、方法
+
+        // 還沒打完?
+    </script>
+</body>
+
+</html>
